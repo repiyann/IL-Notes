@@ -2,12 +2,13 @@
 
 ## Description
 
-This is a simple CRUD (Create, Read, Update, Delete) Notes application. It allows users to create, read, update, and delete notes. It's perfect for jotting down quick thoughts, managing a to-do list, or keeping track of important information. This project 
+This is a simple CRUD (Create, Read, Update, Delete) Notes application. It allows users to create, read, update, and delete notes. It's perfect for jotting down quick thoughts, managing a to-do list, or keeping track of important information. This project is an assigment given by Infinite Learning mentor
 
 ## Features
 
 - **Create Notes**: Add new notes with a title, datetime, and notes.
 - **Read Notes**: View the list of all your notes.
+- **Read Note by ID**: View the selected notes.
 - **Update Notes**: Edit the title and content of existing notes.
 - **Delete Notes**: Remove notes that are no longer needed.
 
@@ -26,3 +27,9 @@ This is a simple CRUD (Create, Read, Update, Delete) Notes application. It allow
 Start the application: `npm run start` or `yarn start`
 
 The application will start on your specified PORT.
+
+- **Create Notes**: /api/createNote
+- **Read Notes**: /api/getNotes
+- **Read Note by ID**: /api/getNote/:id
+- **Update Notes**: /api/updateNote/:id
+- **Delete Notes**: /api/deleteNote/:id
