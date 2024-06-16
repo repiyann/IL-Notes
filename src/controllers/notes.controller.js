@@ -12,7 +12,7 @@ async function createNotes(req, res, pool, next) {
 			return res.status(400).json({ message: 'Datetime field must be datetime type' })
 		}
 
-		await pool.query('INSERT INTO notes (title, datetime, notes) VALUES (?, ?, ?)', [title, datetime, note])
+		await pool.query('INSERT INTO notes (title, datetime, note) VALUES (?, ?, ?)', [title, datetime, note])
 
 		return res.status(201).json({ message: 'Note successfully created' })
 	} catch (error) {
@@ -62,9 +62,9 @@ async function getNoteByID(req, res, pool, next) {
 async function updateNote(req, res, pool, next) {
 	try {
 		const { id } = req.params
-		const { title, datetime, notes } = req.body
+		const { title, datetime, note } = req.body
 
-		if (validator.isEmpty(id) || validator.isEmpty(title) || validator.isEmpty(datetime) || validator.isEmpty(notes)) {
+		if (validator.isEmpty(id) || validator.isEmpty(title) || validator.isEmpty(datetime) || validator.isEmpty(note)) {
 			return res.status(400).json({ message: 'All fields cannot be empty' })
 		}
 
@@ -77,10 +77,10 @@ async function updateNote(req, res, pool, next) {
 			return res.status(404).json({ message: 'Note not found' })
 		}
 
-		const [results] = await pool.query('UPDATE notes SET title = ?, datetime = ?, notes = ? WHERE id = ?', [
+		const [results] = await pool.query('UPDATE notes SET title = ?, datetime = ?, note = ? WHERE id = ?', [
 			title,
 			datetime,
-			notes,
+			note,
 			id
 		])
 		if (results.affectedRows === 0) {
